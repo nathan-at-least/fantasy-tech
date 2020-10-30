@@ -33,6 +33,14 @@ This one is harder to do well, especially when we take into account UX + availab
 - Remove dependence on a namespace / availability gatekeeper for all repositories.
 - Simpler UX for the happy cases. Example: Want to publish new revisions? You don't need an account, just push. Want to do another clone of a repo you've already fetched? Great, the local store already has it.
 
+### Atomic Revision Refactoring
+
+You can commit to a set of revisions, merges, rebases, squashes, etc… atomically, either applying them all or none of them.
+
+Example: A release script might update a package version file, commit the result, create a release tag, and merge that onto a release-only branch. If any step fails, the starting state is left unmodified.
+
+**Why?** Reuse the atomicity of transactions in the high level UI to streamline automation and other operations.
+
 ### In-Band Ticketing and Pull Requests
 
 Issue tracking and pull request lifecycle are built into the base layer.
